@@ -1,11 +1,12 @@
 <?php
 include('includes/checklogin.php');
 check_login();
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +19,7 @@ check_login();
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -130,8 +132,46 @@ check_login();
                             </div>
                         </div>
                     </div>
+                    <!-- Donut Chart for Tổng số chỗ đặt -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <canvas id="bookingDonutChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donut Chart for Tổng Tour -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <canvas id="tourDonutChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donut Chart for Tổng số người dùng -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <canvas id="userDonutChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donut Chart for Tổng số quản trị viên -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <canvas id="adminDonutChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
+
             <!-- Invoice Example -->
             <?php include('includes/modal.php');?>
             <!---Container Fluid-->
@@ -154,6 +194,74 @@ check_login();
 <script src="js/ruang-admin.min.js"></script>
 <script src="vendor/chart.js/Chart.min.js"></script>
 <script src="js/demo/chart-area-demo.js"></script>
+
+
 </body>
+<script>
+    // Donut Chart for Tổng số chỗ đặt
+    var bookingData = {
+        labels: ["Bookings", "Remaining"],
+        datasets: [{
+            data: [<?php echo $cnt1; ?>, <?php echo $totalBookings - $cnt1; ?>],
+            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 255, 255, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)', 'rgb(209,209,215)'],
+            borderWidth: 1
+        }]
+    };
+
+    var bookingDonutChart = new Chart(document.getElementById('bookingDonutChart'), {
+        type: 'doughnut',
+        data: bookingData
+    });
+
+    // Donut Chart for Tổng Tour
+    var tourData = {
+        labels: ["Tour Packages", "Remaining"],
+        datasets: [{
+            data: [<?php echo $cnt3; ?>, <?php echo $totalTourPackages - $cnt3; ?>],
+            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(255, 255, 255, 0.2)'],
+            borderColor: ['rgba(255, 99, 132, 1)', 'rgb(209,209,215)'],
+            borderWidth: 1
+        }]
+    };
+
+    var tourDonutChart = new Chart(document.getElementById('tourDonutChart'), {
+        type: 'doughnut',
+        data: tourData
+    });
+
+    // Donut Chart for Tổng số người dùng
+    var userData = {
+        labels: ["Users", "Remaining"],
+        datasets: [{
+            data: [<?php echo $cnt; ?>, <?php echo $totalUsers - $cnt; ?>],
+            backgroundColor: ['rgba(255, 205, 86, 0.2)', 'rgba(255, 255, 255, 0.2)'],
+            borderColor: ['rgba(255, 205, 86, 1)', 'rgb(209,209,215)'],
+            borderWidth: 1
+        }]
+    };
+
+    var userDonutChart = new Chart(document.getElementById('userDonutChart'), {
+        type: 'doughnut',
+        data: userData
+    });
+
+    // Donut Chart for Tổng số quản trị viên
+    var adminData = {
+        labels: ["Administrators", "Remaining"],
+        datasets: [{
+            data: [<?php echo $cnt2; ?>, <?php echo $totalAdmins - $cnt2; ?>],
+            backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 255, 255, 0.2)'],
+            borderColor: ['rgba(54, 162, 235, 1)', 'rgb(209,209,215)'],
+            borderWidth: 1
+        }]
+    };
+
+    var adminDonutChart = new Chart(document.getElementById('adminDonutChart'), {
+        type: 'doughnut',
+        data: adminData
+    });
+
+</script>
 
 </html>
