@@ -7,6 +7,7 @@ check_login();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,12 +26,12 @@ check_login();
 <body id="page-top">
 <div id="wrapper">
     <!-- Sidebar -->
-    <?php include('includes/sidebar.php');?>
+    <?php include('includes/sidebar.php'); ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <!-- TopBar -->
-            <?php include('includes/header.php');?>
+            <?php include('includes/header.php'); ?>
             <!-- Topbar -->
 
             <!-- Container Fluid-->
@@ -50,14 +51,16 @@ check_login();
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-uppercase mb-1">Tổng số chỗ đặt</div>
+                                        <div class="text-xs font-weight-bold text-uppercase mb-1">Tổng số chỗ đặt
+                                        </div>
                                         <?php $sql1 = "SELECT BookingId from tblbooking";
-                                        $query1 = $dbh -> prepare($sql1);
+                                        $query1 = $dbh->prepare($sql1);
                                         $query1->execute();
-                                        $results1=$query1->fetchAll(PDO::FETCH_OBJ);
-                                        $cnt1=$query1->rowCount();
+                                        $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
+                                        $cnt1 = $query1->rowCount();
                                         ?>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo htmlentities($cnt1);?></div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <?php echo htmlentities($cnt1); ?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-calendar fa-2x text-primary"></i>
@@ -74,12 +77,13 @@ check_login();
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-uppercase mb-1">Tổng Tour</div>
                                         <?php $sql3 = "SELECT PackageId from tbltourpackages";
-                                        $query3= $dbh -> prepare($sql3);
+                                        $query3 = $dbh->prepare($sql3);
                                         $query3->execute();
-                                        $results3=$query3->fetchAll(PDO::FETCH_OBJ);
-                                        $cnt3=$query3->rowCount();
+                                        $results3 = $query3->fetchAll(PDO::FETCH_OBJ);
+                                        $cnt3 = $query3->rowCount();
                                         ?>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo htmlentities($cnt3);?></div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <?php echo htmlentities($cnt3); ?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-shopping-cart fa-2x text-success"></i>
@@ -94,14 +98,16 @@ check_login();
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-uppercase mb-1">Tổng số người dùng</div>
+                                        <div class="text-xs font-weight-bold text-uppercase mb-1">Tổng số người dùng
+                                        </div>
                                         <?php $sql = "SELECT id from tblusers";
-                                        $query = $dbh -> prepare($sql);
+                                        $query = $dbh->prepare($sql);
                                         $query->execute();
-                                        $results=$query->fetchAll(PDO::FETCH_OBJ);
-                                        $cnt=$query->rowCount();
+                                        $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                        $cnt = $query->rowCount();
                                         ?>
-                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo htmlentities($cnt);?></div>
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                            <?php echo htmlentities($cnt); ?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-users fa-2x text-info"></i>
@@ -116,14 +122,16 @@ check_login();
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-uppercase mb-1">Tổng số quản trị viên</div>
+                                        <div class="text-xs font-weight-bold text-uppercase mb-1">Tổng số quản trị
+                                            viên</div>
                                         <?php $sql = "SELECT id from tbladmin";
-                                        $query = $dbh -> prepare($sql);
+                                        $query = $dbh->prepare($sql);
                                         $query->execute();
-                                        $results=$query->fetchAll(PDO::FETCH_OBJ);
-                                        $cnt2=$query->rowCount();
+                                        $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                        $cnt2 = $query->rowCount();
                                         ?>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo htmlentities($cnt2);?></div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <?php echo htmlentities($cnt2); ?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-comments fa-2x text-warning"></i>
@@ -173,12 +181,12 @@ check_login();
             </div>
 
             <!-- Invoice Example -->
-            <?php include('includes/modal.php');?>
+            <?php include('includes/modal.php'); ?>
             <!---Container Fluid-->
         </div>
         <!-- Footer -->
-        <?php include('includes/footer.php');?>
 
+        <?php include('vendor/thongke.php'); ?>
         <!-- Footer -->
     </div>
 </div>
@@ -261,7 +269,8 @@ check_login();
         type: 'doughnut',
         data: adminData
     });
-
 </script>
+
+
 
 </html>
